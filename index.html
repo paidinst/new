@@ -475,113 +475,8 @@
         } else {
             return "desktop";
         }
-    }</script> <script type="text/javascript">window.AHE.prebidAuctionRun     = false;
-    window.AHE.deferredLoaded       = false;
-    window.AHE.deferredTimeout      = 5000; // milliseconds
-    window.AHE.usPrivacyString      = false || getCookie('usprivacy');
-    window.AHE.isEU                 = false;
-    window.AHE.media_layout         = get_media_layout();
-    window.AHE.usPrivacyOptOut      = false;
-
-    var wWidth          = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-    var wHeight         = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-
-    var forced_country          = getUrlParameter(window.location.href,"country");
-    var ab                      = getUrlParameter(window.location.href,"ab");
-    var euCountries             = ["at", "be", "bg", "cy", "cz", "de", "dk", "ee", "es", "fi", "fr", "gb", "gr", "hr", "hu", "ie", "it", "lt", "lu", "lv", "mt", "nl", "pl", "pt", "ro", "se", "si", "sk"];
-
-    // Loading region-specific JS
-    async_load_js("/cf/geoip/",function() {
-        // Country IP Loaded
-        console.log("IP Country: " + ipCountry);
-        if (forced_country) {
-            console.log("ipCountry override: " + forced_country);
-            ipCountry = forced_country;
-        }
-
-        if (euCountries.includes(ipCountry)) {
-            // EU User
-            window.AHE.isEU = true;
-        } else {
-            // Non-EU User
-            // Sovrn Tracking Pixel
-            async_load_js('//ap.lijit.com/www/sovrn_beacon_standalone/sovrn_standalone_beacon.js?iid=13388134&amp;uid=ahencyclopedia');
-            // US Privacy Handling
-            if (!window.AHE.usPrivacyString) {
-                if (ipCountry == 'us') {
-                    // US User
-                    window.AHE.usPrivacyString = '1YNY';
-                } else {
-                    // Non-US User
-                    window.AHE.usPrivacyString = '1---';
-                }
-                setCookie('usprivacy',window.AHE.usPrivacyString,7);
-            }
-            // CCPA Optout
-            if (window.AHE.usPrivacyString.charAt(2) == 'Y') {
-                window.AHE.usPrivacyOptOut = true;
-                setCookie('_pubcid_optout',1,30,'None');
-            }
-            // Navegg DMP
-            if (!window.AHE.isEU && !window.AHE.usPrivacyOptOut) {
-                (function(n,v,g){o="Navegg";if(!n[o]){
-                    a=v.createElement('script');a.src=g;b=document.getElementsByTagName('script')[0];
-                    b.parentNode.insertBefore(a,b);n[o]=n[o]||function(parms){
-                        n[o].q=n[o].q||[];n[o].q.push([this, parms])};}})
-                (window, document, 'https://tag.navdmp.com/universal.min.js');
-                window.naveggReady = window.naveggReady||[];
-                window.nvg70766 = new Navegg({
-                    acc: 70766
-                });
-            }
-        }
-    });</script> <script type="text/javascript">var googletag = googletag || {};
-    googletag.cmd = googletag.cmd || [];
-
-    var pbjs = pbjs || {};
-    pbjs.que = pbjs.que || [];
-
-    $(document).ready(function () {
-        if (!window.AHE.prebidAuctionRun) {
-            window.__tcfapi('addEventListener', 2, function(tcData, success) {
-                if (success) {
-                    console.log('TCF v2',tcData,success);
-                    if(tcData.cmpStatus === 'loaded') {
-                        window.AHE.prebidAuctionRun = true;
-                        clearTimeout(window.AHE.adsLoadTimer);
-                        console.log('Ads loaded on window.load() event. Running auction!');
-                        deferredJS();
-                    }
-                } else {
-                    console.warn('TCF v2 error',tcData);
-                }
-            });
-        }
-    });
-    // What to load
-    function deferredJS() {
-        // Prebid Advertising
-        let dbg     = getUrlParameter(window.location.href,"pbjs_debug");
-
-        let url     = '/mnet-advertising-with-patreon.js.php?v=2';
-        let token   = getCookie('mnet-patreon-access-token');
-        if (token) {
-            url     = url + '&token=' + token;
-        }
-        if (dbg) {
-            url     = url + '&cachebuster=' + Math.round(Math.random() * 1000000000);
-            console.log("Cachebuster: " + url);
-        }
-        async_load_js(url);
-
-        // Google Analytics
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-3851568-4', 'auto');
-        ga('send', 'pageview');
     }</script> 
+
 	<style>#front-section-one .section-one-column-two .type-post:nth-of-type(5){padding-bottom:inherit !important;}h1,h2,h3,h4,h5,h6{font-family:'Marcellus'!important;}.headline{font-family: 'Marcellus';}p.site-title{font-family:'Marcellus';}</style>
 	
 	
@@ -909,7 +804,7 @@ a.remove-ads-link {
 	}(document, 'script', 'facebook-jssdk'));</script> <div class="container-all"><header id="masthead" class="site-header cf" role="banner"><div class="site-header-content"><div id="site-branding"><h1 class="site-title"><a href="https://www.medievalists.net/" rel="home">Paideia Institute</a></h1><p class="site-description">Living Latin and Ancient Greek</p> <button id="overlay-open" class="overlay-open overlay-btn"><span>Menu</span></button><nav id="header-social" class="header-social social-nav" role="navigation">
 	<ul id="menu-social-links" class="menu">
 		<li id="menu-item-75812" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-75812">
-			<a href="https://www.facebook.com/medievalists.net/">Facebook</a></li>
+			<a href="/">Facebook</a></li>
 		<li id="menu-item-75813" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-75813">
 			<a href="https://twitter.com/">Twitter</a></li></ul></nav></div><nav id="desktop-navigation" class="desktop-navigation cf" role="navigation">
 	<ul id="menu-primary" class="menu"><li id="menu-item-39307" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-39307"><a href="/" aria-current="page">Home</a></li><li id="menu-item-39316" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-39316">
